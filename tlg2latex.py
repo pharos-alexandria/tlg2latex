@@ -73,17 +73,6 @@ def principal():
 				print "Impossible de normaliser "+ fichier
 		sys.exit()
 	
-	
-def test():
-	''' Test unitaire -> oui je pourrais faire mieux, mais j'ai la flemme d'apprendre à utiliser le module de python'''
-	tableau = [('ceci? est; un: test unitaire!','Ceci ? Est ; un : test unitaire !',True )]
-	for i in tableau:
-		if normalise_typo_ligne(i[0],i[2])	!= i[1]:
-			print "erreur"
-			print "Donné : \t"  + i[0]
-			print "Attendu : \t" + '"' + i[1] + '"'
-			print "Reçus : \t" + '"' +  normalise_typo_ligne(i[0])+ '"'
-		else:
-			print "ok"
+
 
 principal()
