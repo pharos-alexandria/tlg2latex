@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-# Maïeul ROUQUETTE %%S
-# http://geekographie.maieul.net/26
-# Paternité  - Partage des Conditions Initiales à l'Identique 2.0 France (CC BY-SA 2.0)
-# http://creativecommons.org/licenses/by-sa/2.0/fr/
-# Ce script normalise la typo des textes extraits depuis la Library of Latin Texts : espace avant les signes de ponctuation double, majuscule en début de phrase
+# Maïeul ROUQUETTE 
+# GPL 3
+# https://www.gnu.org/licenses/gpl-3.0.html
+# Ce script permet de transformer des textes issu du TLG en texte utilisable en LaTeX :
+#    - suppression des numeros de lignes
+#    - suppression des césures
+#    - remplacement des guillemets par des \enquote{}
+#    - tiret longs
 # Version 1.0
 import re
 
@@ -32,9 +35,7 @@ def normaliser_typo_fichier(fichier):
 def normalise_typo_ligne(ligne,debut_phrase=True):
 	'''On normalise la typo, ligne par ligne'''
 	# Une majuscule après les . ? !
-	ligne = re.sub('[\s]{2,}',' ',ligne)		#suppression des espaces multiples
-	
-	majuscule_apres = ['?','!','.']
+
 	
 	for i in range(len(ligne)):
 		if ligne[i] in majuscule_apres : 
