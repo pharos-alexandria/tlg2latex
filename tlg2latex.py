@@ -6,11 +6,10 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-#    - tiret longs
 # Version 1.0
 import re
 
-def normaliser_typo_fichier(fichier):
+def normaliser_fichier(fichier):
 	'''Normalise un fichier'''
 	import codecs
 	finale = ''
@@ -19,31 +18,40 @@ def normaliser_typo_fichier(fichier):
 	for ligne in file:
 		ligne  = ligne.strip()
 		if ligne!='':
-			finale = finale + normalise_typo_ligne(ligne)+'\n'
+			finale = finale + normalise_ligne(ligne)+'\n'
 	file.close()
 	file = codecs.open("normal_"+fichier,encoding='utf-8',mode='w')
 	file.write(finale)
 	file.close()
 
-def normalise_typo_ligne(ligne):
+def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
+	ligne = re.sub("\([0-9]*\)","",ligne) 	# suppression du numero
+	ligne.strip()				# suppression des espaces de début et fin
+	
+	# suppression des césures
+	if ligne[-1] == "-":
+		ligne = ligne[:-1] + "%"
+	
+	# les guillemets
+	ligne = ligne.replace("“","\enquote{")
+	ligne = ligne.replace("”","}")
 	return ligne
 	
 def principal():
 	import sys
 	import getopt
 	option = getopt.getopt(sys.argv[1:],'')[1]
-	print option
 	if option == 'test':
 		test()
 		sys.exit()
 	else:
 		for fichier in option:
 			try:
-				normaliser_typo_fichier(fichier)
-				print fichier + " normalisé"
+			    normaliser_fichier(fichier)
+			    print (fichier + " normalisé")
 			except:
-				print "Impossible de normaliser "+ fichier
+			    print ("Impossible de normaliser "+ fichier)
 		sys.exit()
 	
 
