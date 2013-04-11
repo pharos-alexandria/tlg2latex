@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 1.0
+# Version 1.1
 import re
 
 def normaliser_fichier(fichier):
