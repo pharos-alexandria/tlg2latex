@@ -19,35 +19,14 @@ def normaliser_typo_fichier(fichier):
 	for ligne in file:
 		ligne  = ligne.strip()
 		if ligne!='':
-			
 			finale = finale + normalise_typo_ligne(ligne)+'\n'
 	file.close()
-	file = codecs.open(fichier,encoding='utf-8',mode='w')
+	file = codecs.open("normal_"+fichier,encoding='utf-8',mode='w')
 	file.write(finale)
 	file.close()
 
 def normalise_typo_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	# Une majuscule après les . ? !
-
-	
-	for i in range(len(ligne)):
-		if ligne[i] in majuscule_apres : 
-			if i+1<len(ligne):
-				if ligne[i+1] !=' ':
-					ligne = ligne.replace(ligne[i]+ligne[i+1],ligne[i]+ligne[i+1].upper())
-				else:				#il y a forcément quelquechose après, vu qu'on a striper
-					ligne = ligne.replace(ligne[i]+' '+ligne[i+2],ligne[i]+' '+ligne[i+2].upper())
-	
-	
-	# La ponctuation avant les signes doubles
-	espace_avant = [':','?','!',';']
-	for signe in espace_avant:
-		ligne = ligne.replace(signe,' '+signe)
-	# Si la ligne était en début de phrase :
-	if debut_phrase == True:
-		ligne = ligne[0].upper() + ligne[1:]
-	
 	return ligne
 	
 def principal():
