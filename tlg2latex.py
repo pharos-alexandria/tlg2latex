@@ -38,6 +38,10 @@ def normalise_ligne(ligne):
 	ligne = re.sub("[‘“«]","\enquote{",ligne)
 	ligne = re.sub("[’”»]","}",ligne)
 	ligne = re.sub("\'","’",ligne) # replace ’ back	
+	
+	# chapters and paragraphs
+	ligne = re.sub("\((\w+?)\.\) ",r"\\marginnote{\1}",ligne) # paragraph number
+	ligne = re.sub("(\d+?\.)",r"\n\\textbf{\1}",ligne) #chapter number  	
 	return ligne
 	
 def principal():
