@@ -30,7 +30,7 @@ def normalise_ligne(ligne):
 	ligne.strip()				# suppression des espaces de début et fin
 	
 	# suppression des césures
-	if ligne[-1] == "-":
+	if ligne[-1] == "‑":
 		ligne = ligne[:-1] + "%"
 	
 	# les guillemets
