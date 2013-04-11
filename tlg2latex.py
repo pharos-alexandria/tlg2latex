@@ -30,12 +30,18 @@ def normalise_ligne(ligne):
 	ligne.strip()				# suppression des espaces de début et fin
 	
 	# suppression des césures
-	if ligne[-1] == "-":
+	if ligne[-1] == "‑":
 		ligne = ligne[:-1] + "%"
 	
 	# les guillemets
-	ligne = ligne.replace("“","\enquote{")
-	ligne = ligne.replace("”","}")
+	ligne = re.sub("([γδ(δι)λπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
+	ligne = re.sub("[‘“«]","\enquote{",ligne)
+	ligne = re.sub("[’”»]","}",ligne)
+	ligne = re.sub("\'","’",ligne) # replace ’ back	
+	
+	# chapters and paragraphs
+	ligne = re.sub("\((\w+?)\.\) ",r"\\marginnote{\1}",ligne) # paragraph number
+	ligne = re.sub("(\d+?\.)",r"\n\\textbf{\1}",ligne) #chapter number  	
 	return ligne
 	
 def principal():
