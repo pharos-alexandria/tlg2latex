@@ -34,8 +34,10 @@ def normalise_ligne(ligne):
 		ligne = ligne[:-1] + "%"
 	
 	# les guillemets
-	ligne = ligne.replace("“","\enquote{")
-	ligne = ligne.replace("”","}")
+	ligne = re.sub("([γδ(δι)λπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
+	ligne = re.sub("[‘“«]","\enquote{",ligne)
+	ligne = re.sub("[’”»]","}",ligne)
+	ligne = re.sub("\'","’",ligne) # replace ’ back	
 	return ligne
 	
 def principal():
