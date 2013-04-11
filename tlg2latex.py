@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Maïeul ROUQUETTE 
+# Maïeul ROUQUETTE ; Annette von STOCKHAUSEN
 # GPL 3
 # https://www.gnu.org/licenses/gpl-3.0.html
 # Ce script permet de transformer des textes issu du TLG en texte utilisable en LaTeX :
