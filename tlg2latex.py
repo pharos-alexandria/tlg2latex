@@ -20,20 +20,14 @@ def normaliser_typo_fichier(fichier):
 		ligne  = ligne.strip()
 		if ligne!='':
 			
-			finale = finale + normalise_typo_ligne(ligne,debut_phrase)+'\n'
-			if ligne[-1] in ['?','!','.']:
-				debut_phrase = True
-			else:
-				debut_phrase = False
-		else:
-			finale = finale + '\n'
+			finale = finale + normalise_typo_ligne(ligne)+'\n'
 	file.close()
 	file = codecs.open(fichier,encoding='utf-8',mode='w')
 	file.write(finale)
 	file.close()
 
-def normalise_typo_ligne(ligne,debut_phrase=True):
-	'''On normalise la typo, ligne par ligne'''
+def normalise_typo_ligne(ligne):
+	'''On normalise ligne par ligne'''
 	# Une majuscule après les . ? !
 
 	
