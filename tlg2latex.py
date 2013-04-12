@@ -26,7 +26,7 @@ def normaliser_fichier(fichier):
 
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub(" \([0-9]*\)","",ligne) 	# suppression du numero
+	ligne = re.sub("\([0-9]*\)","",ligne) 	# suppression du numero
 	ligne.strip()				# suppression des espaces de début et fin
 	
 	# suppression des césures
