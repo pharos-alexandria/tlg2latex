@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 1.0
+# Version 1.1
 import re
 
 def normaliser_fichier(fichier):
@@ -26,8 +26,8 @@ def normaliser_fichier(fichier):
 
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub(" \([0-9]*\)","",ligne) 	# suppression du numero
-	ligne.strip()				# suppression des espaces de début et fin
+	ligne = re.sub("\([0-9]*\)","",ligne) 	# suppression du numero
+	ligne = ligne.strip()			# suppression des espaces de début et fin
 	
 	# suppression des césures
 	if ligne[-1] in ("‑","-"):		# hyphen are not everytime the same
