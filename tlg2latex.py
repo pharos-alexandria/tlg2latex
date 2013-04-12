@@ -44,7 +44,7 @@ def normalise_ligne(ligne):
 	ligne = re.sub("(\d+?\.)",r"\n\\textbf{\1}",ligne) #chapter number  	
 	return ligne
 	
-def principal():
+def __main__():
 	import sys
 	import getopt
 	option = getopt.getopt(sys.argv[1:],'')[1]
@@ -61,5 +61,4 @@ def principal():
 		sys.exit()
 	
 
-
-principal()
+__main__()
