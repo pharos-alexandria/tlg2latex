@@ -26,7 +26,7 @@ def normaliser_fichier(fichier):
 
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub("\([0-9]*\)","",ligne) 	# suppression du numero
+	ligne = re.sub(" \([0-9]*\)","",ligne) 	# suppression du numero
 	ligne.strip()				# suppression des espaces de début et fin
 	
 	# suppression des césures
@@ -34,7 +34,7 @@ def normalise_ligne(ligne):
 		ligne = ligne[:-1] + "%"
 	
 	# les guillemets
-	ligne = re.sub("([γδ(δι)λπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
+	ligne = re.sub("([γδ(δι)θλμπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
 	ligne = re.sub("[‘“«]","\enquote{",ligne)
 	ligne = re.sub("[’”»]","}",ligne)
 	ligne = re.sub("\'","’",ligne) # replace ’ back	
