@@ -35,13 +35,13 @@ def normalise_ligne(ligne):
 	
 	# les guillemets
 	ligne = re.sub("([γδ(δι)θλμπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
-	ligne = re.sub("[‘“«]","\enquote{",ligne)
-	ligne = re.sub("[’”»]","}",ligne)
+	ligne = re.sub("[‘“«]","\zitat{",ligne)
+	ligne = re.sub("[’”»]","}{}{}{}",ligne)
 	ligne = re.sub("\'","’",ligne) # replace ’ back	
 	
 	# chapters and paragraphs
-	ligne = re.sub("\((\w+?)\.\) ",r"\\marginnote{\1}",ligne) # paragraph number
-	ligne = re.sub("(\d+?\.)",r"\n\\textbf{\1}",ligne) #chapter number  	
+	ligne = re.sub("\((\w+?)\.\) ",r"%\1%\n",ligne) # paragraph number
+	ligne = re.sub("(\d+?\.)",r"\n%\1",ligne) #chapter number  	
 	return ligne
 	
 def principal():
