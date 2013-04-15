@@ -6,9 +6,9 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 1.1
+# Version 1.1.1
 import re
-
+import default as config
 def normaliser_fichier(fichier):
 	'''Normalise un fichier'''
 	import codecs
@@ -26,25 +26,25 @@ def normaliser_fichier(fichier):
 
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub("\([0-9]*\)","",ligne) 	# suppression du numero
+	ligne = re.sub(config.line_number,"",ligne) 	# suppression du numero
 	ligne = ligne.strip()			# suppression des espaces de début et fin
 	
 	# suppression des césures
-	if ligne[-1] in ("‑","-"):		# hyphen are not everytime the same
+	if ligne[-1] in config.hyphen:		
 		ligne = ligne[:-1] + "%"
 	
 	# les guillemets
-	ligne = re.sub("([γδ(δι)θλμπρτφ])’",r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
-	ligne = re.sub("[‘“«]","\zitat{",ligne)
-	ligne = re.sub("[’”»]","}{}{}{}",ligne)
+	ligne = re.sub(config.ellipsis,r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
+	ligne = re.sub(config.begin_quote_r,config.begin_quote_w,ligne)
+	ligne = re.sub(config.end_quote_r,config.end_quote_w,ligne)
 	ligne = re.sub("\'","’",ligne) # replace ’ back	
 	
 	# chapters and paragraphs
-	ligne = re.sub("\((\w+?)\.\) ",r"%\1%\n",ligne) # paragraph number
-	ligne = re.sub("(\d+?\.)",r"\n%\1",ligne) #chapter number  	
+	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
+	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  	
 	return ligne
 	
-def principal():
+def __main__():
 	import sys
 	import getopt
 	option = getopt.getopt(sys.argv[1:],'')[1]
@@ -61,5 +61,4 @@ def principal():
 		sys.exit()
 	
 
-
-principal()
+__main__()
