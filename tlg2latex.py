@@ -8,6 +8,7 @@
 #    - remplacement des guillemets par des \enquote{}
 # Version 1.1.1
 import re
+import os
 import default as config
 def normaliser_fichier(fichier):
 	'''Normalise un fichier'''
@@ -20,7 +21,7 @@ def normaliser_fichier(fichier):
 		if ligne!='':
 			finale = finale + normalise_ligne(ligne)+'\n'
 	file.close()
-	file = codecs.open("normal_"+fichier,encoding='utf-8',mode='w')
+	file = codecs.open(os.path.dirname(fichier) + os.sep + "normal_" + os.path.basename(fichier),encoding='utf-8',mode='w')
 	file.write(finale)
 	file.close()
 
