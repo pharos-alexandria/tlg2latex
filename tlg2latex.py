@@ -44,12 +44,27 @@ def normalise_ligne(ligne):
 	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
 	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  	
 	return ligne
-	
+
+def test():
+	"""Be sur any modification doesn't break compatibilty"""
+	test = os.listdir("test") 	 #All the file of the test directory.
+	import hashlib
+	for file in test:
+		if file[0] in ["0","1","2","3","4","5","6","7","8","9"]: #If it's a file to be tested.
+		    md5 = hashlib.md5(open("test" + os.sep + "normal_" + file,"rb").read()).hexdigest()
+		    normaliser_fichier("test" + os.sep + file)
+		    
+		    if md5 !=hashlib.md5(open("test" + os.sep + "normal_" + file,"rb").read()).hexdigest():
+			    print ("Erreur sur le fichier" + file)
+			    
+		    else:
+			    print ("Fichier "+file+ " OK")
+
 def __main__():
 	import sys
 	import getopt
 	option = getopt.getopt(sys.argv[1:],'')[1]
-	if option == 'test':
+	if option == ['test']:
 		test()
 		sys.exit()
 	else:
