@@ -21,7 +21,11 @@ def normaliser_fichier(fichier):
 		if ligne!='':
 			finale = finale + normalise_ligne(ligne)+'\n'
 	file.close()
-	file = codecs.open(os.path.dirname(fichier) + os.sep + "normal_" + os.path.basename(fichier),encoding='utf-8',mode='w')
+	if os.path.dirname(fichier)=="":
+	    destination = "normal_" + os.path.basename(fichier)
+	else:
+	    destination = os.path.dirname(fichier) + os.sep + "normal_" + os.path.basename(fichier)
+	file = codecs.open(destination,encoding='utf-8',mode='w')
 	file.write(finale)
 	file.close()
 
