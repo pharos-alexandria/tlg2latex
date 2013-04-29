@@ -42,7 +42,7 @@ def normalise_ligne(ligne):
 	ligne = re.sub(config.ellipsis,r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
 	ligne = re.sub(config.begin_quote_r,config.begin_quote_w,ligne)
 	ligne = re.sub(config.end_quote_r,config.end_quote_w,ligne)
-	ligne = re.sub("\'","’",ligne) # replace ’ back	
+	ligne = re.sub("\'",config.ellipsis_back,ligne) # replace ’ back	
 	
 	# chapters and paragraphs
 	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number

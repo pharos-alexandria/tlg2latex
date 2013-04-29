@@ -23,6 +23,7 @@ unicode_normalize = False			# to normalize or not to normalize the Unicode chara
 						    #"NFKC"
 						    #"NFD"
 						    #"NFKD"
+ellipsis_back = "’"				# the ellipsis symbol
 #import the config file.
 
 try :
