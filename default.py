@@ -17,7 +17,14 @@ begin_quote_w	= "\enquote{"			# the begining of quotation
 end_quote_w	= "}"				# the end of quotation
 paragraph_w	= r"\\marginnote{\1}"		# the paragraph number
 chapter_w	= r"\n\\textbf{\1}"		# the chapter number
-#import the config file
+unicode_normalize = False			# to normalize or not to normalize the Unicode characters ? See the documentation of unicodedata.normalize() on http://docs.python.org/2/library/unicodedata.html. The value :
+						    #False : not normalize ?
+						    #"NFC"
+						    #"NFKC"
+						    #"NFD"
+						    #"NFKD"
+#import the config file.
+
 try :
     from config import *
 except:

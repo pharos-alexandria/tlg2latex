@@ -10,6 +10,7 @@
 import re
 import os
 import default as config
+import unicodedata
 def normaliser_fichier(fichier):
 	'''Normalise un fichier'''
 	import codecs
@@ -46,7 +47,11 @@ def normalise_ligne(ligne):
 	
 	# chapters and paragraphs
 	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
-	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  	
+	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  
+	
+	# Unicode normalization
+	if config.unicode_normalize:
+	    ligne = unicodedata.normalize(config.unicode_normalize,ligne)
 	return ligne
 
 def test():
