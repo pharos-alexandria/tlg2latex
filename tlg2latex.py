@@ -18,7 +18,6 @@ def normaliser_fichier(fichier):
 	debut_phrase = True
 	file = codecs.open(fichier,encoding='utf-8')
 	for ligne in file:
-		ligne  = ligne.strip()
 		if ligne!='':
 			finale = finale + normalise_ligne(ligne)+'\n'
 	file.close()
