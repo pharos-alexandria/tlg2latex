@@ -7,4 +7,4 @@ Licence : GPL 3 https://www.gnu.org/licenses/gpl-3.0.html
 
 Auteurs : Maïeul ROUQUETTE, Annette von STOCKHAUSEN
 
-Utilisation : http://geekographie.maieul.net/Du-Thesaurus-Linguae-Graecae-vers
+Utilisation : http://geekographie.maieul.net/Du-Thesaurus-Linguae-Graecae-a
