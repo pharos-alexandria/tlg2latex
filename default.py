@@ -12,6 +12,7 @@ begin_quote_r	= "[‘“«]"			# the regexp to find begining of quotation
 end_quote_r	= "[’”»]"			# the regexp to find end of quotation
 paragraph_r	= "\((\w+?)\.\) "		# the regexp to find a paragraph number
 chapter_r	= "(\d+?\.)"			# the regexp to find a chapter number
+ndash_r		= "—"				# the ndash in reading
 #writing
 begin_quote_w	= "\enquote{"			# the begining of quotation
 end_quote_w	= "}"				# the end of quotation
@@ -24,6 +25,7 @@ unicode_normalize = False			# to normalize or not to normalize the Unicode chara
 						    #"NFD"
 						    #"NFKD"
 ellipsis_back = "’"				# the ellipsis symbol
+ndash_w		= "--"				# the ndash in writing
 #import the config file.
 
 try :

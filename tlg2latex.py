@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 2.0
+# Version 2.1
 import re
 import os
 import default as config
@@ -43,6 +43,9 @@ def normalise_ligne(ligne):
 	ligne = re.sub(config.begin_quote_r,config.begin_quote_w,ligne)
 	ligne = re.sub(config.end_quote_r,config.end_quote_w,ligne)
 	ligne = re.sub("\'",config.ellipsis_back,ligne) # replace ’ back	
+	
+	#tiret
+	ligne = re.sub(config.ndash_r,config.ndash_w,ligne)
 	
 	# chapters and paragraphs
 	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
