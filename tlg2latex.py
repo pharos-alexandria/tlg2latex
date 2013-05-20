@@ -32,6 +32,13 @@ def normaliser_fichier(fichier):
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
 	ligne = re.sub(config.line_number,"",ligne) 	# suppression du numero
+	# are we at the begining of a new paragraph
+	
+	if re.match(config.par_break_r,ligne):
+		paragraph = True
+	else:
+		paragraph = False
+	
 	ligne = ligne.strip()			# suppression des espaces de début et fin
 	
 	# suppression des césures
@@ -54,6 +61,10 @@ def normalise_ligne(ligne):
 	# chapters and paragraphs
 	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
 	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  
+	
+	# paragraph begining:
+	if paragraph:
+		ligne = config.par_break_w + ligne
 	
 	# Unicode normalization
 	if config.unicode_normalize:
@@ -87,8 +98,8 @@ def __main__():
 			try:
 			    normaliser_fichier(fichier)
 			    print (fichier + " normalisé")
-			except:
-			    print ("Impossible de normaliser "+ fichier)
+			except Exception as e:
+			    print ("Impossible de normaliser "+ fichier + " "+ str(e))
 		sys.exit()
 	
 

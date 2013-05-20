@@ -15,8 +15,9 @@ chapter_r	= "(\d+?\.)"			# the regexp to find a chapter number
 ndash_r		= "—"				# the ndash in reading
 begin_insert_r 	= "<"				# the symbol at begining of insert.
 end_insert_r	= ">"				# the symbol at end of insert.
-
+par_break_r	= "^( )"			# the begining of paragraph
 #writing
+par_break_w	= "\r\n"			# the begining of paragraph
 begin_quote_w	= "\enquote{"			# the begining of quotation
 end_quote_w	= "}"				# the end of quotation
 paragraph_w	= r"\\marginnote{\1}"		# the paragraph number
