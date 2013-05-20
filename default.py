@@ -16,6 +16,7 @@ ndash_r		= "—"				# the ndash in reading
 begin_insert_r 	= "<"				# the symbol at begining of insert.
 end_insert_r	= ">"				# the symbol at end of insert.
 par_break_r	= "^( )"			# the begining of paragraph
+empty_line_r	= ("","\r","\n")		# the empty lines
 #writing
 par_break_w	= "\r\n"			# the begining of paragraph
 begin_quote_w	= "\enquote{"			# the begining of quotation
@@ -32,6 +33,7 @@ ellipsis_back 	= "’"				# the ellipsis symbol
 ndash_w		= "--"				# the ndash in writing
 begin_insert_w	= r"\\textins{"			# the begining of insert.
 end_insert_w	= "}"				# the end of insert.
+empty_line_w	= "\r"
 #import the config file.
 
 try :

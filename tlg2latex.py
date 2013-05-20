@@ -18,8 +18,11 @@ def normaliser_fichier(fichier):
 	debut_phrase = True
 	file = codecs.open(fichier,encoding='utf-8')
 	for ligne in file:
-		if ligne!='':
+		if ligne not in config.empty_line_r:
 			finale = finale + normalise_ligne(ligne)+'\n'
+		else:
+			finale	= finale + config.empty_line_w
+		
 	file.close()
 	if os.path.dirname(fichier)=="":
 	    destination = "normal_" + os.path.basename(fichier)
