@@ -13,6 +13,9 @@ end_quote_r	= "[’”»]"			# the regexp to find end of quotation
 paragraph_r	= "\((\w+?)\.\) "		# the regexp to find a paragraph number
 chapter_r	= "(\d+?\.)"			# the regexp to find a chapter number
 ndash_r		= "—"				# the ndash in reading
+begin_insert_r 	= "<"				# the symbol at begining of insert.
+end_insert_r	= ">"				# the symbol at end of insert.
+
 #writing
 begin_quote_w	= "\enquote{"			# the begining of quotation
 end_quote_w	= "}"				# the end of quotation
@@ -24,8 +27,10 @@ unicode_normalize = False			# to normalize or not to normalize the Unicode chara
 						    #"NFKC"
 						    #"NFD"
 						    #"NFKD"
-ellipsis_back = "’"				# the ellipsis symbol
+ellipsis_back 	= "’"				# the ellipsis symbol
 ndash_w		= "--"				# the ndash in writing
+begin_insert_w	= r"\\textins{"			# the begining of insert.
+end_insert_w	= "}"				# the end of insert.
 #import the config file.
 
 try :
