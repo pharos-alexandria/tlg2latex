@@ -6,7 +6,7 @@
 
 #reading
 hyphen		= ("‑","-")			# the ≠ type of hyphen
-line_number 	= "\([0-9]*\)" 			# the regexp to test the line number
+line_number_r 	= "\([0-9]*\)" 			# the regexp to test the line number
 ellipsis  	= "([γδ(δι)θλμπρτφ])’"		# the regexp to prevent transforming ellipsis to endquot 
 begin_quote_r	= "[‘“«]"			# the regexp to find begining of quotation
 end_quote_r	= "[’”»]"			# the regexp to find end of quotation
@@ -34,6 +34,7 @@ ndash_w		= "--"				# the ndash in writing
 begin_insert_w	= r"\\textins{"			# the begining of insert.
 end_insert_w	= "}"				# the end of insert.
 empty_line_w	= "\r"
+line_number_w	= ""				# the line number at end
 #import the config file.
 
 try :

@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 2.2
+# Version 2.3
 import re
 import os
 import default as config
@@ -34,7 +34,7 @@ def normaliser_fichier(fichier):
 
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub(config.line_number,"",ligne) 	# suppression du numero
+	ligne = re.sub(config.line_number_r,config.line_number_w,ligne) 	# suppression du numero
 	# are we at the begining of a new paragraph
 	
 	if re.match(config.par_break_r,ligne):
