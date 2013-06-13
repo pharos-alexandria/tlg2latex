@@ -35,6 +35,7 @@ begin_insert_w	= r"\\textins{"			# the begining of insert.
 end_insert_w	= "}"				# the end of insert.
 empty_line_w	= "\r"
 line_number_w	= ""				# the line number at end
+last_regexp	= False				# rexgep which are applied at last (("find1","replace1"),("find2","replace2"))
 #import the config file.
 
 try :

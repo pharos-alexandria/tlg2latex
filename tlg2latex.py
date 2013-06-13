@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 2.3
+# Version 2.4
 import re
 import os
 import default as config
@@ -69,6 +69,10 @@ def normalise_ligne(ligne):
 	if paragraph:
 		ligne = config.par_break_w + ligne
 	
+	# last series of regexp
+	if config.last_regexp:
+		for regexp in config.last_regexp:
+		    ligne = re.sub(regexp[0],regexp[1],ligne)
 	# Unicode normalization
 	if config.unicode_normalize:
 	    ligne = unicodedata.normalize(config.unicode_normalize,ligne)
