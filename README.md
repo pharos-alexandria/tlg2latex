@@ -9,11 +9,11 @@ Convertir facilement des données issues du *Thesaurus Linguae Graecae* vers LaT
 
 Utilisation basique : ```python3 tlg2latex.py <fichier_a_convertir>```
 
-Documentaton : http://geekographie.maieul.net/117
+Documentation : http://geekographie.maieul.net/117
 
 ## English
 To convert data from *Thesaurus Linguae Graecae* to LaTeX
 
 Basic use : ```python3 tlg2latex.py <file_to_convert>```
 
-Documentaton : http://geekographie.maieul.net/117
+Documentation : http://geekographie.maieul.net/117
