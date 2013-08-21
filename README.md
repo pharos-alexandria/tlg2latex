@@ -1,10 +1,15 @@
-tlg2latex
-=========
+#tlg2latex
 
-Pouvoir convertir facilement des données ici du tlg vers LaTeX.
+GPL 3 https://www.gnu.org/licenses/gpl-3.0.html
+Maïeul ROUQUETTE, Annette von STOCKHAUSEN
 
-Licence : GPL 3 https://www.gnu.org/licenses/gpl-3.0.html
 
-Auteurs : Maïeul ROUQUETTE, Annette von STOCKHAUSEN
+## Français
+Convertir facilement des données issues du *Thesaurus Linguae Graecae* vers LaTeX.
+Utilisation basique : ```python3 tlg2latex.py <fichier_a_convertir>```
+Documentaton : http://geekographie.maieul.net/117
 
-Utilisation : http://geekographie.maieul.net/Du-Thesaurus-Linguae-Graecae-a
+## English
+To convert data from *Thesaurus Linguae Graecae* to LaTeX
+Basic use : ```python3 tlg2latex.py <file_to_convert>```
+Documentaton : http://geekographie.maieul.net/117
