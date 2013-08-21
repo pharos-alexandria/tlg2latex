@@ -17,6 +17,8 @@ begin_insert_r 	= "<"				# the symbol at begining of insert.
 end_insert_r	= ">"				# the symbol at end of insert.
 par_break_r	= "^( )"			# the begining of paragraph
 empty_line_r	= ("","\r","\n")		# the empty lines
+before_stanza_r = " \n"		# before stanza
+after_stanta_r 	= " \n"		# after stanza
 #writing
 par_break_w	= "\r\n"			# the begining of paragraph
 begin_quote_w	= "\enquote{"			# the begining of quotation
@@ -36,6 +38,9 @@ end_insert_w	= "}"				# the end of insert.
 empty_line_w	= "\r"
 line_number_w	= ""				# the line number at end
 last_regexp	= False				# rexgep which are applied at last (("find1","replace1"),("find2","replace2"))
+before_stanza_w = "\stanza" #before stanza
+after_stanza_w = "\&"
+between_stanza_w = "&"
 #import the config file.
 
 try :

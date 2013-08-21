@@ -6,11 +6,13 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 2.4
+# Version 2.5
 import re
 import os
 import default as config
 import unicodedata
+global stanza
+stanza = False # set to True when verses starts
 def normaliser_fichier(fichier):
 	'''Normalise un fichier'''
 	import codecs
@@ -22,6 +24,10 @@ def normaliser_fichier(fichier):
 			finale = finale + normalise_ligne(ligne)+'\n'
 		else:
 			finale	= finale + config.empty_line_w
+	
+	# correct end stanza
+	finale = finale.replace(config.between_stanza_w+"\n"+config.after_stanza_w+"\n","\n"+config.after_stanza_w+"\n")
+	
 		
 	file.close()
 	if os.path.dirname(fichier)=="":
@@ -42,11 +48,27 @@ def normalise_ligne(ligne):
 	else:
 		paragraph = False
 	
+	# for stanza
+	global stanza
+	stanza_start = False
+	stanza_end = False
+	
+	if re.match(config.before_stanza_r,ligne):
+		if stanza == False:
+			stanza = True
+			stanza_start = True
+		else:
+			stanza = False
+			stanza_end = True
+		
 	ligne = ligne.strip()			# suppression des espaces de début et fin
 	
 	# suppression des césures
-	if ligne[-1] in config.hyphen:		
-		ligne = ligne[:-1] + "%"
+	try:
+		if ligne[-1] in config.hyphen:	
+			ligne = ligne[:-1] + "%"
+	except:
+		pass
 	
 	# les guillemets
 	ligne = re.sub(config.ellipsis,r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
@@ -73,6 +95,15 @@ def normalise_ligne(ligne):
 	if config.last_regexp:
 		for regexp in config.last_regexp:
 		    ligne = re.sub(regexp[0],regexp[1],ligne)
+	
+	# stanza
+	if stanza_end:
+		ligne = config.after_stanza_w
+	elif stanza_start:
+		ligne = config.before_stanza_w
+	elif stanza :
+		ligne = ligne + config.between_stanza_w
+	
 	# Unicode normalization
 	if config.unicode_normalize:
 	    ligne = unicodedata.normalize(config.unicode_normalize,ligne)
