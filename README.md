@@ -2,7 +2,7 @@
 
 GPL 3 https://www.gnu.org/licenses/gpl-3.0.html
 Maïeul ROUQUETTE, Annette von STOCKHAUSEN
-
+https://github.com/maieul/tlg2latex
 
 ## Français
 Convertir facilement des données issues du *Thesaurus Linguae Graecae* vers LaTeX.
