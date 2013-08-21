@@ -1,7 +1,9 @@
 #tlg2latex
 
 GPL 3 https://www.gnu.org/licenses/gpl-3.0.html
+
 Maïeul ROUQUETTE, Annette von STOCKHAUSEN
+
 https://github.com/maieul/tlg2latex
 
 ## Français
