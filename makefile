@@ -1,5 +1,6 @@
 all:
 	rm *.pdf
+	rm ../tlg2latex.zip
 	rm -rf tlg2latex
 	mkdir tlg2latex
 	pandoc README.md -o README.pdf
