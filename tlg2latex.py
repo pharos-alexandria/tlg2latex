@@ -6,7 +6,7 @@
 #    - suppression des numeros de lignes
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
-# Version 2.5
+# Version 2.5.1
 import re
 import os
 import default as config
