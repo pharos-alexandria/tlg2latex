@@ -79,14 +79,15 @@ def normalise_ligne(ligne):
 			stanza = False
 			stanza_end = True
 		
-	ligne = ligne.strip()			# suppression des espaces de début et fin
 	
-	# suppression des césures
+	ligne = ligne.strip()			# suppression des espaces de début et fin
+	# hyphenation
 	try:
 		if ligne[-1] in config.hyphen:	
 			ligne = ligne[:-1] + "%"
 	except:
 		pass
+
 	
 	# les guillemets
 	ligne = re.sub(config.ellipsis,r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
