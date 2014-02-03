@@ -38,11 +38,29 @@ def normaliser_fichier(fichier):
 	file.write(finale)
 	file.close()
 
+def make_regexp_linenumber_hyphen():
+	'''Make a regexp containing regexp for the line number preceding by the regexp for the hyphen.
+	Return also the corresponding regexp replacement'''
+	line_number_r,line_number_w = config.line_number_r,config.line_number_w
+
+	# Prepare the regexp
+	line_number_r = "([" + "".join(config.hyphen) + "]?)" + "[\s]*" + line_number_r
+
+	# Prepare the regexp replacement
+	line_number_w = line_number_w.replace("1","2") + "\\1"
+
+	return line_number_r,line_number_w
+
+
 def normalise_ligne(ligne):
 	'''On normalise ligne par ligne'''
-	ligne = re.sub(config.line_number_r,config.line_number_w,ligne) 	# suppression du numero
-	# are we at the begining of a new paragraph
+
+
+	line_number_r,line_number_w = make_regexp_linenumber_hyphen()
+	ligne = re.sub(line_number_r,line_number_w,ligne) 	# change of line number
+
 	
+	# are we at the begining of a new paragraph
 	if re.match(config.par_break_r,ligne):
 		paragraph = True
 	else:
