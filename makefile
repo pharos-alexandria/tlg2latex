@@ -3,7 +3,7 @@ all:
 	rm -f ../tlg2latex.zip
 	rm -rf tlg2latex
 	mkdir tlg2latex
-	pandoc README.md -o README.pdf
+	pandoc README.md -o README.pdf --latex-engine=xelatex -V mainfont='Linux Libertine O'
 	rm -f test/.DS_Store
 	ln  default.py tlg2latex.py *pdf tlg2latex
 	mkdir tlg2latex/test
