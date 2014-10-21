@@ -7,7 +7,7 @@
 #reading
 hyphen		= ("‑","-")			# the ≠ type of hyphen
 line_number_r 	= "\([0-9]*\)" 			# the regexp to test the line number
-ellipsis  	= "([γδ(δι)θλμπρτφ])’"		# the regexp to prevent transforming ellipsis to endquot 
+ellipsis  	= "([γδ(δι)θλμπρτφ(ἵν)])’"	# the regexp to prevent transforming ellipsis to endquot 
 begin_quote_r	= "[‘“«]"			# the regexp to find begining of quotation
 end_quote_r	= "[’”»]"			# the regexp to find end of quotation
 paragraph_r	= "\((\w+?)\.\) "		# the regexp to find a paragraph number
