@@ -3,7 +3,7 @@
 # GPL 3
 # https://www.gnu.org/licenses/gpl-3.0.html
 # Ce script permet de transformer des textes issu du TLG en texte utilisable en LaTeX :
-#    - suppression des numeros de lignes
+#    - suppression des numeros de lines
 #    - suppression des césures
 #    - remplacement des guillemets par des \enquote{}
 # Version 2.5.2
@@ -19,9 +19,9 @@ def normaliser_fichier(fichier):
 	finale = ''
 	debut_phrase = True
 	file = codecs.open(fichier,encoding='utf-8')
-	for ligne in file:
-		if ligne not in config.empty_line_r:
-			finale = finale + normalize_line(ligne)+'\n'
+	for line in file:
+		if line not in config.empty_line_r:
+			finale = finale + normalize_line(line)+'\n'
 		else:
 			finale	= finale + config.empty_line_w
 	
@@ -52,16 +52,16 @@ def make_regexp_linenumber_hyphen():
 	return line_number_r,line_number_w
 
 
-def normalize_line(ligne):
+def normalize_line(line):
 	'''Normalize one line'''
 
 
 	line_number_r,line_number_w = make_regexp_linenumber_hyphen()
-	ligne = re.sub(line_number_r,line_number_w,ligne) 	# change of line number
+	line = re.sub(line_number_r,line_number_w,line) 	# change of line number
 
 	
 	# are we at the begining of a new paragraph
-	if re.match(config.par_break_r,ligne):
+	if re.match(config.par_break_r,line):
 		paragraph = True
 	else:
 		paragraph = False
@@ -71,7 +71,7 @@ def normalize_line(ligne):
 	stanza_start = False
 	stanza_end = False
 	
-	if re.match(config.before_stanza_r,ligne):
+	if re.match(config.before_stanza_r,line):
 		if stanza == False:
 			stanza = True
 			stanza_start = True
@@ -80,53 +80,53 @@ def normalize_line(ligne):
 			stanza_end = True
 		
 	
-	ligne = ligne.strip()			# suppression des espaces de début et fin
+	line = line.strip()			# suppression des espaces de début et fin
 	# hyphenation
 	try:
-		if ligne[-1] in config.hyphen:	
-			ligne = ligne[:-1] + "%"
+		if line[-1] in config.hyphen:	
+			line = line[:-1] + "%"
 	except:
 		pass
 
 	
 	# les guillemets
-	ligne = re.sub(config.ellipsis,r"\1'",ligne) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
-	ligne = re.sub(config.begin_quote_r,config.begin_quote_w,ligne)
-	ligne = re.sub(config.end_quote_r,config.end_quote_w,ligne)
-	ligne = re.sub("\'",config.ellipsis_back,ligne) # replace ’ back	
+	line = re.sub(config.ellipsis,r"\1'",line) # replace ’ in Ellipsis with ', otherwise not discernable from single endquote
+	line = re.sub(config.begin_quote_r,config.begin_quote_w,line)
+	line = re.sub(config.end_quote_r,config.end_quote_w,line)
+	line = re.sub("\'",config.ellipsis_back,line) # replace ’ back	
 	
 	#tiret
-	ligne = re.sub(config.ndash_r,config.ndash_w,ligne)
+	line = re.sub(config.ndash_r,config.ndash_w,line)
 	
 	#insert
-	ligne = re.sub(config.begin_insert_r,config.begin_insert_w,ligne)
-	ligne = re.sub(config.end_insert_r,config.end_insert_w,ligne)
+	line = re.sub(config.begin_insert_r,config.begin_insert_w,line)
+	line = re.sub(config.end_insert_r,config.end_insert_w,line)
 	
 	# chapters and paragraphs
-	ligne = re.sub(config.paragraph_r,config.paragraph_w,ligne) # paragraph number
-	ligne = re.sub(config.chapter_r,config.chapter_w,ligne) #chapter number  
+	line = re.sub(config.paragraph_r,config.paragraph_w,line) # paragraph number
+	line = re.sub(config.chapter_r,config.chapter_w,line) #chapter number  
 	
 	# paragraph begining:
 	if paragraph:
-		ligne = config.par_break_w + ligne
+		line = config.par_break_w + line
 	
 	# last series of regexp
 	if config.last_regexp:
 		for regexp in config.last_regexp:
-		    ligne = re.sub(regexp[0],regexp[1],ligne)
+		    line = re.sub(regexp[0],regexp[1],line)
 	
 	# stanza
 	if stanza_end:
-		ligne = config.after_stanza_w
+		line = config.after_stanza_w
 	elif stanza_start:
-		ligne = config.before_stanza_w
+		line = config.before_stanza_w
 	elif stanza :
-		ligne = ligne + config.between_stanza_w
+		line = line + config.between_stanza_w
 	
 	# Unicode normalization
 	if config.unicode_normalize:
-	    ligne = unicodedata.normalize(config.unicode_normalize,ligne)
-	return ligne
+	    line = unicodedata.normalize(config.unicode_normalize,line)
+	return line
 
 def test():
 	"""Be sur any modification doesn't break compatibilty"""
