@@ -22,6 +22,10 @@ Documentation : http://geekographie.maieul.net/117
 
 ## Changelog 
 
+### 2.6.0 21-10-2014
+
+Allow ἴνα ellipsis as ἴν’
+
 ### 2.5.2 03-02-2014
 
 Correct line ending characters.
