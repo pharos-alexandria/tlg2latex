@@ -21,7 +21,7 @@ def normaliser_fichier(fichier):
 	file = codecs.open(fichier,encoding='utf-8')
 	for ligne in file:
 		if ligne not in config.empty_line_r:
-			finale = finale + normalise_ligne(ligne)+'\n'
+			finale = finale + normalize_line(ligne)+'\n'
 		else:
 			finale	= finale + config.empty_line_w
 	
@@ -52,8 +52,8 @@ def make_regexp_linenumber_hyphen():
 	return line_number_r,line_number_w
 
 
-def normalise_ligne(ligne):
-	'''On normalise ligne par ligne'''
+def normalize_line(ligne):
+	'''Normalize one line'''
 
 
 	line_number_r,line_number_w = make_regexp_linenumber_hyphen()
@@ -138,10 +138,10 @@ def test():
 		    normaliser_fichier("test" + os.sep + file)
 		    
 		    if md5 !=hashlib.md5(open("test" + os.sep + "normal_" + file,"rb").read()).hexdigest():
-			    print ("Erreur sur le fichier" + file)
+			    print ("Error on file" + file)
 			    
 		    else:
-			    print ("Fichier "+file+ " OK")
+			    print ("File "+file+ " OK")
 
 def __main__():
 	import sys
@@ -156,7 +156,7 @@ def __main__():
 			    normaliser_fichier(fichier)
 			    print (fichier + " normalisé")
 			except Exception as e:
-			    print ("Impossible de normaliser "+ fichier + " "+ str(e))
+			    print ("Can't normalize "+ fichier + " "+ str(e))
 		sys.exit()
 	
 
